@@ -2,39 +2,41 @@
 title: Zertifikate
 description: 
 published: 1
-date: 2025-12-21T06:12:07.493Z
-tags: tls, ssl, acme, openssl, certificate, ca authority
+date: 2025-12-21T06:49:24.445Z
+tags: acme, ca authority, certificate, openssl, ssl, tls
 editor: ckeditor
 dateCreated: 2025-12-21T06:12:07.493Z
 -->
 
+<h1>Zertifikatshoelle</h1>
 <p>Eigentlich sind Zertifikate kein Problem, wenn man dafuer eine domain mit oeffentlich tld hat, die sich via lets encrypt signieren kann. Aber auch dann braucht man entwder eine vpn / portforwarding / tunnel loesung, damit man die http oder https challenge machen kann oder aber man muss der instanz, die das TLS terminiert eine moeglichkeit geben, den DNS Server der Domain zu kontrollieren. Ersteres ist ziemlich muehsam, da man meist nur eine public IP hat und es dann schwierig wird wenn man da verschiedene interne subdomains bzw. server die zertifikate wollen, hat. Und bei der DNS Challenge muss der Revproxy die API des DNS Servers ansprechen koennen. Und am Ende hat man Domainnamen die aus host.subdomain.domain.tld bestehen und irgendwie auch kacke ist.&nbsp;</p>
-<p>Weglassen kann man die Dinger aber auch nicht, denn ohne verhalten sich all die Apps dann auch wieder ganz eigen. Daher, auch wenn das ab etwas mehr Hosts im &nbsp;LAN vll anders aussieht, &nbsp;bei 3 - 4 Machinen ists da schlicht einfacher eigene Zertifikate, die dann 2 - 3 Jahre gueltig sind, zu erstellen. Openssl reicht dazu schon aus, aber bis die Zertifkate erneuert werden muessen, sind die noetigen flags doch schon lange vergessen. Ausfuehrlich ist hier, aber wir machen <a href="https://stackoverflow.com/questions/8169999/how-can-i-create-a-self-signed-certificate-for-localhost">qnd</a></p>
-<p>&nbsp;</p>
+<p>Weglassen kann man die Dinger aber auch nicht, denn ohne verhalten sich all die Apps dann auch wieder ganz eigen. Daher, auch wenn das ab etwas mehr Hosts im &nbsp;LAN vll anders aussieht, &nbsp;bei 3 - 4 Machinen ists da schlicht einfacher eigene Zertifikate, die dann 2 - 3 Jahre gueltig sind, zu erstellen. Openssl reicht dazu schon aus, aber bis die Zertifkate erneuert werden muessen, sind die noetigen flags doch schon lange vergessen. Ausfuehrlich ist <a href="https://jamielinux.com/docs/openssl-certificate-authority/introduction.html">hier</a>, aber wir machen <a href="https://stackoverflow.com/questions/8169999/how-can-i-create-a-self-signed-certificate-for-localhost">qnd</a></p>
 <h2>1. Create and change to a safe directory:</h2>
 <pre><code class="language-plaintext">cd /yada/so/crt</code></pre>
 <h2>2. Generate&nbsp;RootCA.pem,&nbsp;RootCA.key&nbsp;&amp;&nbsp;RootCA.crt as self-certified Certification Authority:</h2>
-<pre><code class="language-plaintext">
-openssl req -x509 -nodes -new -sha256 -days 10240 -newkey rsa:2048 -keyout RootCA.key -out RootCA.pem -subj "/C=ZA/CN=RootCA-CA"
-openssl x509 -outform pem -in RootCA.pem -out RootCA.crt
-</code></pre>
+<pre><code class="language-plaintext">openssl req -x509 -nodes -new -sha256 -days 10240 -newkey rsa:2048 \
+	-keyout RootCA.key -out RootCA.pem -subj "/C=ZA/CN=RootCA-CA"
+
+openssl x509 -outform pem -in RootCA.pem -out RootCA.crt</code></pre>
 <h2>3. make request for certification: xhost.key, xhost.csr:</h2>
 <pre><code class="language-plaintext">C: Country
 ST: State
 L: locality (city)
 O: Organization Name
 Organization Unit
-CN: Common Name
-
-    
-</code></pre>
+CN: Common Name</code></pre>
 <pre><code class="language-plaintext">
-openssl req -new -nodes -newkey rsa:2048 -keyout xhost.key -out xhost.csr -subj "/C=ZA/ST=FREE STATE/L=Golden Gate Highlands National Park/O=WWF4ME/OU=xhost.home/CN=xhost.local"
+openssl req -new -nodes \
+	-newkey rsa:2048 \
+	-keyout xhost.key \
+	-out xhost.csr \
+	-subj "/C=ZA/ST=FREE STATE/L=Golden Gate Highlands National Park/O=WWF4ME/OU=xhost.home/CN=xhost.local"
 </code></pre>
 <h2>4. get xhost.crt certified by RootCA.pem:</h2>
-<pre><code class="language-plaintext">
-openssl x509 -req -sha256 -days 1024 -in xhost.csr -CA RootCA.pem -CAkey RootCA.key -CAcreateserial -extfile domains.ext -out xhost.crt
-</code></pre>
+<pre><code class="language-plaintext">openssl x509 -req -sha256 -days 1024 \
+	-in xhost.csr -CA RootCA.pem \
+	-CAkey RootCA.key -CAcreateserial \
+	-extfile domains.ext -out xhost.crt</code></pre>
 <p>with extfile domains.ext file defining many secured ways of accessing the server website:</p>
 <pre><code class="language-plaintext">authorityKeyIdentifier=keyid,issuer
 basicConstraints=CA:FALSE
@@ -45,4 +47,15 @@ DNS.1 = localhost
 DNS.2 = xhost
 DNS.3 = xhost.local
 DNS.4 = dev.example.org
-DNS.5 = 192.168.1.2</code></pre>
+IP.1 = 192.168.1.2	</code></pre>
+<p>Und schon hat man eine selbstsiegnierte Certificate Authority. Das CA Cert kann man nun einfach in den jeweiligen Thruststore der involvierten Hosts kopieren… also einfach, wenn man weiss, dass das eigentlich ueber alles anders ablaeuft.&nbsp;</p>
+<p>Mit Fedora und Arch Linux reicht als root user:</p>
+<pre><code class="language-plaintext">trust anchor --store myCA.crt </code></pre>
+<p>Bei Debian und Ubuntu Derivaten auch als root:&nbsp;</p>
+<pre><code class="language-plaintext">openssl x509 -inform DER &lt; myCA.crt &gt; myCA_pem.crt
+cp myCA_pem.crt /usr/local/share/ca-certificates/myCA_pem.crt
+update-ca-certificates</code></pre>
+<p>Natuerlich ausser man hat ein immutable fs wie es ubuntu iot oder core oder wie das heisst, verwendet, weil natuerlich. Bei Apple sicher auch was anderes und bei windows gibts dazu sicher auch etwas mit GUI.&nbsp;</p>
+<p>Und natuerlich sollte man nicht localhost oder local als tld waehlen, denn das mag Chrome aus was fuer Gruenden auch, ueberhaupt nicht und sagt die verbindung sei unsicher. derp oder irgendwas willkuerliches ist dann auch nicht sinnvoll, da sowohl firefox als auch chrome lieber die suchmaschine fragen was host.domain.derp soll, statt einen DNS Request zu machen. example hingegen soll da wohl gut funktionieren, ist mir dann aber auch irgendwie zu hohl. Also ist halt arpa die Loesung…&nbsp;</p>
+<p>Jetzt kann man hoffen, dass der deployte dev container das CaCert auch irgendwie in seinem Thruststore hat oder stolpert dann halt irgendwie auf kryptische Fehlermeldungen. Bei node / javascript apps kann es a helfen, den container einfach mal mit <a href="https://stackoverflow.com/questions/10888610/ignore-invalid-self-signed-ssl-certificate-in-node-js-with-https-request">NODE_TLS_REJECT_UNAUTHORIZED=0</a> als env variable zu starten.&nbsp;</p>
+<p>&nbsp;</p>
