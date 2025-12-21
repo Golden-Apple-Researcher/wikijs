@@ -1,0 +1,53 @@
+<!--
+title: Home
+description: Startsteie
+published: 1
+date: 2025-12-21T10:43:21.826Z
+tags: 
+editor: ckeditor
+dateCreated: 2025-10-28T16:35:10.144Z
+-->
+
+<h1>Einleitung</h1>
+<p>Ziel dieses Projektes, ist eine zusammenhaengende Umgebung fuer die Arbeit und Konfiguration von grossen Sprachmodellen und anderen AI Modellen zu schaffen. Dazu werden z.b. Low-Code Apps wie Flowise (Composition von LLM zu AI Systemen), AnythingLLM (LLM Chat mit vielen Optionen), ComfyUI (Erstellung von Bildgeneratoren) oder Jupyterlab (Python Notebook) bereitgestellt. Als Datenaggregatoren kommen dabei SearXNG, &nbsp;RSSBridge und Linkding zur Verwendung. Um Projekte mittels Git zu verwalten, kommt Forgejo (sowas wie Gitlab/Github zum selber hosten) zum Einsatz. Bytestash ist eine Art Pastebin und soll dabei helfen, CodeSnippets und anderes ueber verschiedene Apps bereit zu stellen. Ejabberd ist dabei der zentrale Chatserver, mit dem die Dabei werden alle Apps via OIDC ueber einen Keycloak Server authentifiziert und authorisiert. Die einzelnen Services werden dabei mittels Kuma auf ihre Verfuegbarkeit ueberwacht. Ausserdem wird noch weiteres Monitoring via Prometheus &amp; Grafana implementiert.&nbsp;</p>
+<p>&nbsp;</p>
+<h1>LLM IDEs</h1>
+<h3><a href="https://www.langflow.org/">Langflow</a></h3>
+<p>Langflow ist so ein Tool mit dem sich Komponenten graphisch zusammenklicken lassen. Also all die LLM Provider wie OpenAI, Anthropic, Openrouter und natuerlich auch die lokalen Engines wie Ollama, Vllm oder SGLang, aber auch Komponenten wie VectorDBs bzw. ganze Memory Loesungen wie Mem0, Suchmaschinen wie Bing, DDG und bestimmt auch SearXNG oder auch Embedding Modelle bzw. preprocessoren wie Docling. Dazu bietet es noch dann einen Chat/flow an, der sich per JS in andere Seiten einbinden laesst, eine REST API und irgendie kann man dann wohl Flows auch noch als Dockerfiles exportieren und seperat laufen. Natuerlich laesst sich da mit Code noch optimieren, aber es ist schon schwierig nach zu kommen, was da staendig an neuen Must-Have Features raus kommen oder sich gar einen Ueberblick zu machen, was die genau machen. Da hat man kann man so aschnell ausprobieren ob die Prompt auch richtig formuliert ist</p>
+<p>Dazu soll wohl SSO mit keycloak auch irgendwie moeglich sein:</p>
+<p><a href="https://github.com/langflow-ai/langflow/issues/8374">Add SSO to Langflow</a></p>
+<p><a href="https://github.com/langflow-ai/langflow/pull/7346">sso with keycloak as well as serveral bug fixes</a>&nbsp;</p>
+<p><a href="https://github.com/langflow-ai/langflow/issues/2855">Single Sign On (SSO) support with OIDC or OAuth2&nbsp;</a></p>
+<p><a href="https://github.com/langflow-ai/langflow/issues/2855">Feat/OAuth Single Sign-On Implementation with Google and Microsoft AD (Entra ID)&nbsp;</a></p>
+<p>&nbsp;</p>
+<h3><a href="https://anythingllm.com/">AnythingLLM</a></h3>
+<p>Hier gehts weniger darum, komplexe RAGs zu konstruieren, sondern &nbsp;zu schauen wie gut die LLM sind bzw. wie man die Systemprompt formulieren muss. Ist also mehr auf Chats fokussiert, bietet aber auch ein paar RAG funktionen und kann ebenfalls so eine Memory Loesung einsetzen.&nbsp;</p>
+<h3><a href="https://www.comfy.org/">ComfyUI</a></h3>
+<p>Aehnlich wie Langflow, nur auf Bildgeneration und so Zeugs spezialisiert.&nbsp;</p>
+<h3>Jupyter</h3>
+<h1>LLM Engines</h1>
+<h3><a href="https://ollama.com/">Ollama</a></h3>
+<p>Die einfachste Loesung ein LLM lokal zu betreiben. Man zieht sich von einer registry ein LLM und startet es dann, praktisch wie mit Docker. Aehnlich wie bei einem Dockerfile gibts da dann das <a href="https://huggingface.co/docs/hub/gguf">GGUF</a> File, wobei es hier nicht darum geht ein Image zu bauen, sondern geregeld wird, wie das LLM strukturiert und quantisiert wurde. Dafuer gibt es Abstriche bei den Anpassungsmoeglichkeiten und ist eher gedacht um LLMs auszuprobieren&nbsp;</p>
+<h3><a href="https://docs.sglang.io/">SGLang</a></h3>
+<p>Vllm und SGLang sind wohl so der Standard, wenn LLMs in Produktion betrieben werden.&nbsp;</p>
+<h3><a href="https://docs.vllm.ai/en/latest/">Vllm</a></h3>
+<h1>Dataprovider</h1>
+<h3>SearXNG</h3>
+<h3>RSSBridge</h3>
+<h3>Linkding</h3>
+<h3>Bytestash</h3>
+<h1>Services</h1>
+<h3>Keycloak</h3>
+<h3>EjabberD</h3>
+<h3>Grafana</h3>
+<h3>Prometheus</h3>
+<h3>Kuma</h3>
+<h3>Minio</h3>
+<h3>&nbsp;</h3>
+<h3><a href="Authentication">Docling</a></h3>
+<p>Embedding Modelle fueren einzelne Chunks in eine VectorDB, damit die danch z.b. mit einer Prompt verglichen und der Kontext injected werden kann. Damit das aber auch gutfunktioniert, muessen die einzelnen Chunks aber auch einen Sinn ergeben. I.e. in einem Buch macht es wenig SInn, wenn der Letzte Satz aus einem Kapitel mit dem Titel des naechsten in einem Chunk verarbeitet wird. Docling ist dafuer da, die Daten aufzubereiten. Ausserdem wurde das Projekt hier in der Schweiz in Rueschlikon <a href="https://arxiv.org/html/2408.09869v5">gestartet</a></p>
+<h3>Wikijs</h3>
+<h3><a href="https://caddyserver.com/features">Caddy</a></h3>
+<p>Waehrend Apache ein typischer Applikationsserver und Traefik eher ein Ingress-Controller ist bzw. in k8s auch als solcher einsetzen laesst, positioniert sich Caddy irgendwo in der Mitte so neben Nginx. Das ist dann mehr so &nbsp;die Art von Reverseproxy, denn man in einen Pod / Docker Compose an die exponierten Ports setzt und der da dann fuer so aufgaben wie Authentication, Caching, Monitoring &nbsp;etc. genutzt werden kann.</p>
+<p>,&nbsp;</p>
+<h3>Cloudflared</h3>
