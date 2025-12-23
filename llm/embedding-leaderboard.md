@@ -2,7 +2,7 @@
 title: Embedding Leaderboard
 description: 
 published: 1
-date: 2025-12-23T11:28:43.605Z
+date: 2025-12-23T13:40:13.852Z
 tags: 
 editor: markdown
 dateCreated: 2025-12-23T11:26:41.985Z
