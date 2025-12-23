@@ -1,0 +1,16 @@
+<!--
+title: VPN Snake Oil &  Some Stuf
+description: Grobe Beschreibung wie das Internet funktioniert, was man so machen kann und was es da so fuer Tools und Services gibt
+published: 1
+date: 2025-12-23T03:14:42.350Z
+tags: 
+editor: ckeditor
+dateCreated: 2025-12-23T03:14:42.350Z
+-->
+
+<h2>Wieso VPNs Schlangenoel sind</h2>
+<p>Eigentlich sollte es jedem vernuenftigen Menschen intuitiv klar sein, dass mit Diensten die gefuehlt 50% der Werbung auf Youtube sponsern und dabei Rabatte von bis zu 80 oder 90% offerieren, etwas nicht serioes sein kann.&nbsp;</p>
+<p>Und natuerlich ist das so, denn die meisten Verbindungen sind sowieso bereits mit TLS verschluesselt, der ISP sieht also nur mit welcher IP man sich verbindet. Unverschluesselte Verbindungen machen mittlerweile nur noch einen verschwindend geringen Teil der Webseiten aus und ist dann meist auch nicht tragisch, da es sich um irgendeienn statischen Blog oder sowas handelt. Der Unterschied ist also einfach, dass nun der VPN Anbieter sieht, mit welcher IP ihr euch verbindet statt der ISP.&nbsp;</p>
+<p>Dabei ist die IP Addresse mit der verbunden wird, alleine gar nicht unbedingt so interessant. Das ist meist wohl sowieso irgendeine AWS/GCP/Azure oder Shared Hosting Addresse, bei der sich nicht zuordnen laesst, womit ihr euch da denn jetzt verbunden habt. Denn um den Host den ihr erreichen wollt zu ermitteln, braucht es zuerst noch eine DNS Abfrage. Der entsprechende DNS Resolver wird zwar im Normalfall &nbsp;vom ISP per DHCP dem lokalen Modem mitgeteilt, laesst sich aber immerhin einfach aendern. VPN Anbieter vollen aber meist auch, dass diese DNS Queries ueber ihre Server laufen, man gibt also einfach an irgendeinen dubiosen Anbieter seine Verbindungs-Metadaten ab.&nbsp;</p>
+<p>Nun sieht natuerlich immerhin auch die aufgerufene Webseite nur die IP Addresse des VPN Anbieters in der Anfrage und man koennte meinen, damit anonym zu sein. Doch erfolgt deren Tracking sowieso kaum ueber die IP Addresse und viel mehr ueber Browser FIngerprinting und es ist durchaus erstaunlich, wie individuell die Browserdaten sein koennen, die da uebermittelt werden.&nbsp;</p>
+<p>VPN Anbieter die also damit werben, die Verbindung zu verschluesseln und einen anonym zu machen, sind also reines Schlangenoel und bestenfalls zu gebrauchen um Geoblocks zu umgehen. Aber ich mein, wenn du irgendeine Netflix Serie sehen willst, die Netflix dir an deinem Ort nicht anbieten will, geh doch einfach zu Pirate Bay statt einer dubiosen FIrma Geld in den Rachen zu werfen. Bisher hat sich ja auch zuverlaessig gezeigt, dass die NoLog Versprechen am Ende auch nur heisse Luft waren.&nbsp;</p>
