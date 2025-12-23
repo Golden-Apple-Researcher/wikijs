@@ -2,7 +2,7 @@
 title: Jupyter
 description: Das Jupyter Universum
 published: 1
-date: 2025-12-23T10:13:37.126Z
+date: 2025-12-23T10:14:40.932Z
 tags: 
 editor: markdown
 dateCreated: 2025-12-23T10:13:06.162Z
@@ -17,7 +17,7 @@ Ein anderer haeufiger Einsatzzweck sind LLMs, da es dort haeufig eher darum geht
 
 Aber auch um etwas zu erklaeren sind Notebooks natuerlich praktisch. Hier ein Beispiel eines JupyterLite Notebooks, dass im Browser laeuft und als [Github Page](https://github.com/golden-Apple-Research/jupyterlite/) gehostet wird. Das Notebook nutzt einen JS Kernel fuer das [P5js](https://p5js.org/) Framework. 
 
-<iframe src="https://golden-apple-research.github.io/jupyterlite/notebooks/index.html?path=p5.ipynb&theme=JupyerLab Dark" 
+<iframe src="https://golden-apple-research.github.io/jupyterlite/notebooks/index.html?path=p5.ipynb&theme=JupyterLab Dark" 
         width="100%" 
         height="1000px"
         ></iframe>
