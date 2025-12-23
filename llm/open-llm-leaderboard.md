@@ -2,7 +2,7 @@
 title: Open LLM Leaderboard
 description: 
 published: 1
-date: 2025-12-23T11:35:23.811Z
+date: 2025-12-23T13:41:42.385Z
 tags: 
 editor: markdown
 dateCreated: 2025-12-23T11:30:27.408Z
