@@ -2,7 +2,7 @@
 title: Huggingface
 description: 
 published: 1
-date: 2025-12-23T12:23:15.368Z
+date: 2025-12-23T13:36:03.280Z
 tags: 
 editor: markdown
 dateCreated: 2025-12-23T11:16:37.780Z
