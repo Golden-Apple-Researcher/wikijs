@@ -2,13 +2,12 @@
 title: Huggingface
 description: 
 published: 1
-date: 2025-12-23T13:36:03.280Z
+date: 2025-12-23T21:59:17.139Z
 tags: 
 editor: markdown
 dateCreated: 2025-12-23T11:16:37.780Z
 ---
 
-# Huggingface
 
 Auf Huggingface lassen sich nicht nur [Models](https://huggingface.co/docs/hub/models) und [Datasets](https://huggingface.co/docs/hub/datasets) beziehen, es ist auch moeglich eigene Apps in [Spaces](https://huggingface.co/docs/hub/spaces) zu deployen. 
 
