@@ -2,7 +2,7 @@
 title: Jupyter
 description: Das Jupyter Universum
 published: 1
-date: 2025-12-23T10:15:51.592Z
+date: 2025-12-23T10:59:23.863Z
 tags: 
 editor: markdown
 dateCreated: 2025-12-23T10:13:06.162Z
@@ -13,7 +13,7 @@ dateCreated: 2025-12-23T10:13:06.162Z
 
 Praktisch ist das halt dort, wo ein schnelles Feedback wichtig ist. Im gegensatz zu einer REPL hat man den ganzen Script-Verlauf vor sich und kann bei Bedarf einzelne Werte anpassen und ab da noch einmal laufen lassen. Ich nutze das gerne, wenn ich irgendwelche Scraper bastel, die dann zuerst mal eine HTML Suppe zurueckgeben und via xpath mal rausgetest wird, was fuer elemente mitgefiltert werden. 
 
-Ein anderer haeufiger Einsatzzweck sind LLMs, da es dort haeufig eher darum geht Parameter fuers Feintuning zu bestimmen, aber man nicht so beschraenkt wie bei einem Config File ist. Siehe z.b. Unsloth mit ihren Notebooks. 
+Ein anderer haeufiger Einsatzzweck sind LLMs, da es dort meist eher darum geht Parameter fuers Feintuning zu bestimmen, aber man nicht so beschraenkt wie bei einem Config File ist. Siehe z.b. [Unsloth](https://docs.unsloth.ai) mit ihren [Notebooks](https://docs.unsloth.ai/get-started/unsloth-notebooks). 
 
 Aber auch um etwas zu erklaeren sind Notebooks natuerlich praktisch. Hier ein Beispiel eines JupyterLite Notebooks, dass im Browser laeuft und als [Github Page](https://github.com/golden-Apple-Research/jupyterlite/) gehostet wird. Das Notebook nutzt einen JS Kernel fuer das [P5js](https://p5js.org/) Framework. 
 
