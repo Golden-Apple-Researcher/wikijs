@@ -2,7 +2,7 @@
 title: Codesandbox
 description: Die kollaborative WebIDE
 published: 1
-date: 2025-12-23T08:09:21.132Z
+date: 2025-12-23T13:39:29.370Z
 tags: 
 editor: markdown
 dateCreated: 2025-12-23T07:21:23.352Z
