@@ -2,7 +2,7 @@
 title: WebGPU Embedding Benchmark
 description: 
 published: 1
-date: 2025-12-23T12:04:49.866Z
+date: 2025-12-23T13:42:01.554Z
 tags: 
 editor: markdown
 dateCreated: 2025-12-23T12:03:02.558Z
