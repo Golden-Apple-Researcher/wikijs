@@ -2,7 +2,7 @@
 title: Grapesjs
 description: 
 published: 1
-date: 2025-12-23T11:00:28.327Z
+date: 2025-12-23T13:36:33.627Z
 tags: 
 editor: markdown
 dateCreated: 2025-12-23T03:20:42.076Z
