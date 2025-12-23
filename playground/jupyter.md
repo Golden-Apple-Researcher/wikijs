@@ -2,7 +2,7 @@
 title: Jupyter
 description: Das Jupyter Universum
 published: 1
-date: 2025-12-23T10:14:40.932Z
+date: 2025-12-23T10:15:51.592Z
 tags: 
 editor: markdown
 dateCreated: 2025-12-23T10:13:06.162Z
