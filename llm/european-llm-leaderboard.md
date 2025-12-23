@@ -2,7 +2,7 @@
 title: European LLM Leaderboard
 description:  This is a collection of multilingual evaluation results obtained using our fork of the LM-evaluation-harness.
 published: 1
-date: 2025-12-23T11:46:35.428Z
+date: 2025-12-23T13:40:36.683Z
 tags: 
 editor: markdown
 dateCreated: 2025-12-23T11:46:35.428Z
