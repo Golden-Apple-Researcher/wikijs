@@ -1,8 +1,8 @@
 ---
-title: LMArena Leaderboard
+title: Embedding Leaderboard
 description: 
 published: 1
-date: 2025-12-23T11:26:41.985Z
+date: 2025-12-23T11:28:28.910Z
 tags: 
 editor: markdown
 dateCreated: 2025-12-23T11:26:41.985Z
