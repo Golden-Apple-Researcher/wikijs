@@ -2,7 +2,7 @@
 title: Huggingface
 description: 
 published: 1
-date: 2025-12-23T12:22:41.142Z
+date: 2025-12-23T12:23:15.368Z
 tags: 
 editor: markdown
 dateCreated: 2025-12-23T11:16:37.780Z
@@ -17,7 +17,7 @@ Typische sind z.b. Chatapps mit OSS Modellen:
 	src="https://tonic-med-gpt-oss-20b-demo.hf.space"
 	frameborder="0"
 	width="100%"
-	height="1000"
+	height="1200px"
 ></iframe>
 
 Aber auch ungewoehnliche Experimente, wie hier das neue 270M FunctionGemma im Browser, finden sich immer wieder: 
