@@ -2,7 +2,7 @@
 title: WikiJS
 description: Kurzer Guide zu diesem Wiki
 published: 1
-date: 2025-12-23T23:00:59.582Z
+date: 2025-12-23T23:24:04.024Z
 tags: 
 editor: markdown
 dateCreated: 2025-12-23T20:21:01.462Z
