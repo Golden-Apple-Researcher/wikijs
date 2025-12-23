@@ -2,7 +2,7 @@
 title: WikiJS
 description: Kurzer Guide zu diesem Wiki
 published: 1
-date: 2025-12-23T20:21:01.462Z
+date: 2025-12-23T20:22:17.687Z
 tags: 
 editor: markdown
 dateCreated: 2025-12-23T20:21:01.462Z
@@ -30,15 +30,13 @@ Und in der gerenderten Page erscheint dann das gewuenschte Iframe. Mit Scripts i
 ```
 Ich versteh zwar nicht, wieso da kein Wrapper eingebaut wurde, aber ist jetzt halt so. Dafuer lassen sich global im Header noch Script Tags platzlieren, dort hab ich einfach mal for teh lulz [AlpineJS](https://alpinejs.dev) und Mithrill gesourced. Die beiden Frameworks sollten sich also in den script Tags wie oben beschrieben, ohne weitere import oder sonstiges, direkt inline in Pages verwenden lassen. 
 
-<script> 
-  window.boot.register('page-ready', () => {
-function MyComponent() {
-	return {
-		view: () => m("main", [m("h1", "Hello world")]),
-	};
-}	
-  })
-</script>
+<div x-data="{ open: false }">
+    <button @click="open = true">Expand</button>
+ 
+    <span x-show="open">
+        Content...
+    </span>
+</div>
 ## Playground
 
 
